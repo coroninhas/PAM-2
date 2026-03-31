@@ -27,7 +27,7 @@ export default function MovieList() {
                 movie: item,
               })
             }
-            width={"45vw"}
+            width="45%"
           />
         )}
       />
