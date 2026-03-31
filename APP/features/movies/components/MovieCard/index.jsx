@@ -2,6 +2,8 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import styles from "./styles";
 
+const PLACEHOLDER_IMAGE = "https://via.placeholder.com/400x280?text=Sem+Imagem";
+
 export default function MovieCard({ movie, onPress, width }) {
   const poster = movie?.img_capa;
 
@@ -9,11 +11,7 @@ export default function MovieCard({ movie, onPress, width }) {
     <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
       <View style={[styles.container, width ? { width } : { width: "100%" }]}>        
         <Image
-          source={
-            poster
-              ? { uri: poster }
-              : require("../../../../assets/placeholder.png")
-          }
+          source={poster ? { uri: poster } : { uri: PLACEHOLDER_IMAGE }}
           style={styles.image}
         />
         <Text style={styles.title}>

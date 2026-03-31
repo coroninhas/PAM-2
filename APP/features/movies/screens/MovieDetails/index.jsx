@@ -3,18 +3,18 @@ import { ScrollView, View, Text, Image } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import styles from "./styles";
 
+const PLACEHOLDER_IMAGE = "https://via.placeholder.com/640x360?text=Sem+Imagem";
+
 export default function MovieDetails() {
   const route = useRoute();
   const movie = route.params?.movie || {};
-  const poster = movie.img_capa;
+  const poster = movie.img_capa || PLACEHOLDER_IMAGE;
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.header}>Detalhes do Filme</Text>
 
       <View style={styles.card}>
-        {poster ? (
-          <Image source={{ uri: poster }} style={styles.poster} />
-        ) : null}
+        <Image source={{ uri: poster }} style={styles.poster} />
 
         <Text style={styles.label}>Título</Text>
         <Text style={styles.value}>{movie.nome || "Título do Filme"}</Text>
