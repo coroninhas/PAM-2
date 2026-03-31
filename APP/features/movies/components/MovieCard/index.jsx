@@ -3,18 +3,24 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import styles from "./styles";
 
 export default function MovieCard({ movie, onPress, width }) {
+  const poster = movie?.img_capa;
+
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
-      <View style={[styles.container, width ? { width } : null]}>        
+      <View style={[styles.container, width ? { width } : { width: "100%" }]}>        
         <Image
-          source={{ uri: movie.img_capa }}
+          source={
+            poster
+              ? { uri: poster }
+              : require("../../../../assets/placeholder.png")
+          }
           style={styles.image}
         />
         <Text style={styles.title}>
-          {movie.nome}
+          {movie?.nome || "Título do Filme"}
         </Text>
         <Text style={styles.year}>
-          {movie.ano}
+          {movie?.ano || "Ano desconhecido"}
         </Text>
 
       </View>

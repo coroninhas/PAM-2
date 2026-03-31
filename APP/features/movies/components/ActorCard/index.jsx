@@ -9,7 +9,7 @@ export default function ActorCard({ actor = {}, onPress, width }) {
 
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
-      <View style={[styles.container, width ? { width } : null]}>
+      <View style={[styles.container, width ? { width } : { width: "100%" }]}>        
         <Image
           source={
             actorImage

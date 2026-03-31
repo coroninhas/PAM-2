@@ -22,6 +22,12 @@ export default StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     elevation: 3,
   },
+  poster: {
+    width: "100%",
+    height: 220,
+    borderRadius: 12,
+    marginBottom: 16,
+  },
   label: {
     fontSize: 14,
     color: "#6b7280",
