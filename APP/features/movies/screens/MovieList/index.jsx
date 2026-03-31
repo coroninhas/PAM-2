@@ -4,21 +4,33 @@ import { useNavigation } from "@react-navigation/native";
 import { useMovies } from "../../hooks/useMovies";
 import MovieCard from "../../components/MovieCard";
 import { ROUTES } from "../../../../constants/routes";
+import styles from "./styles";
 
 export default function MovieList() {
   const { movies, loading } = useMovies();
   const navigation = useNavigation();
 
-  if (loading) { return <Text>Carregando...</Text>;}
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loadingText}>Carregando...</Text>
+      </View>
+    );
+  }
 
   return (
-    <View style={{ padding: 16, flex: 1 }}>
+    <View style={styles.container}>
+      <Text style={styles.header}>Filmes</Text>
       <FlatList
-        style={{ flex: 1 }}
+        style={styles.list}
+        contentContainerStyle={styles.listContent}
         data={movies}
         keyExtractor={(item) => item.id.toString()}
         numColumns={2}
-        columnWrapperStyle={{ justifyContent: "space-around" }}
+        columnWrapperStyle={styles.columnWrapper}
+        ListEmptyComponent={
+          <Text style={styles.emptyText}>Nenhum filme encontrado.</Text>
+        }
         renderItem={({ item }) => (
           <MovieCard
             movie={item}

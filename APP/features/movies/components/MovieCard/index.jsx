@@ -4,8 +4,8 @@ import styles from "./styles";
 
 export default function MovieCard({ movie, onPress, width }) {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <View style={[styles.container, { width: width }]}>        
+    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
+      <View style={[styles.container, width ? { width } : null]}>        
         <Image
           source={{ uri: movie.img_capa }}
           style={styles.image}
